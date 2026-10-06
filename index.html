@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Baby Shower</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{
+  --b1:#a9dcff;--b2:#d6f0ff;--b3:#8ccaf7;--card:#ffffff;--ink:#2f4a6d;--soft:#5f7fa3;
+  --pink:#7cc4f5;--blue:#5aaeea;--yellow:#ffe08a;--mint:#a8e6cf;--lilac:#b9dbff;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--b1:#10294a;--b2:#1b3d6b;--b3:#12365a;--card:#22406a;--ink:#e6f3ff;--soft:#b9d3ee}}
+:root[data-theme="dark"]{--b1:#10294a;--b2:#1b3d6b;--b3:#12365a;--card:#22406a;--ink:#e6f3ff;--soft:#b9d3ee}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;background-color:var(--b2);background-image:linear-gradient(135deg,var(--b1),var(--b2),var(--b3),var(--b1));background-size:300% 300%;animation:bg 18s ease infinite;color:var(--ink);font-family:"Fredoka","Quicksand","Trebuchet MS",sans-serif;line-height:1.45;text-align:center;overflow-x:hidden}
+@keyframes bg{50%{background-position:100% 50%}}
+#fx{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+#fx span{position:absolute;display:block}
+.cl{opacity:.55;animation:drift linear infinite}
+@keyframes drift{from{transform:translateX(-120px)}to{transform:translateX(110vw)}}
+.sp{animation:twinkle 2.4s ease-in-out infinite}
+@keyframes twinkle{50%{transform:scale(1.6) rotate(20deg);opacity:.3}}
+.bl{bottom:-60px;animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-115vh) translateX(30px)}}
+.wrap{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:0 18px 120px}
+.flags{display:flex;justify-content:space-between;margin:0 -18px 6px;border-top:3px solid var(--ink)}
+.flags i{width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-top:30px solid var(--c);transform-origin:top;animation:sway 3s ease-in-out infinite;animation-delay:calc(var(--i)*.18s)}
+@keyframes sway{50%{transform:rotate(7deg)}}
+.script{display:inline-block;font-family:"Pacifico","Brush Script MT",cursive;font-size:3.3rem;line-height:1.5;padding:0 .12em .2em;margin:6px 0 0;background:linear-gradient(90deg,#2e8bd8,#5aaeea,#7a8ff0);-webkit-background-clip:text;background-clip:text;color:transparent;animation:bob 3s ease-in-out infinite}
+.title{font-size:2.3rem;line-height:1.3;margin:0}
+.kick{margin:14px 0 0;font-weight:600;color:var(--soft)}
+h2{font-size:1.55rem;font-weight:700;margin:0 0 6px}
+.small{color:var(--soft);margin:0}
+.big{font-size:1.35rem;font-weight:700;margin:2px 0}
+@keyframes bob{50%{transform:translateY(-6px)}}
+
+/* Regalo */
+.giftwrap{position:relative;width:180px;height:190px;margin:84px auto 10px}
+.gift{all:unset;cursor:pointer;display:block;width:100%;height:100%;position:relative}
+.gift:focus-visible{outline:3px solid var(--ink);outline-offset:8px;border-radius:16px}
+.boxbody{position:absolute;bottom:0;left:10px;width:160px;height:110px;background:var(--pink);border-radius:0 0 16px 16px;z-index:2}
+.boxbody::after{content:"";position:absolute;left:66px;top:0;width:28px;height:100%;background:var(--yellow)}
+.lid{position:absolute;bottom:110px;left:0;width:180px;height:42px;background:var(--lilac);border-radius:12px;z-index:3;transition:transform .7s cubic-bezier(.3,1.5,.5,1);transform-origin:left bottom}
+.lid::after{content:"";position:absolute;left:76px;top:0;width:28px;height:100%;background:var(--yellow)}
+.bow{position:absolute;left:50%;top:-26px;width:70px;height:30px;transform:translateX(-50%);z-index:4}
+.bow i{position:absolute;top:0;width:32px;height:28px;border:7px solid var(--yellow);border-radius:50%}
+.bow i:first-child{left:0;transform:rotate(-20deg)}.bow i:last-child{right:0;transform:rotate(20deg)}
+.peek{position:absolute;left:45px;bottom:70px;width:90px;z-index:1;transition:transform .8s .25s cubic-bezier(.3,1.4,.5,1);transform:translateY(30px)}
+.open .lid{transform:translate(-26px,-78px) rotate(-22deg)}
+.open .peek{transform:translateY(-58px)}
+.hint{margin:6px 0 0;font-weight:600;color:var(--soft);animation:bob 1.6s ease-in-out infinite}
+.opened .hint{display:none}
+.giftwrap:not(.open) .gift{animation:wiggle 3s ease-in-out infinite}
+@keyframes wiggle{0%,86%,100%{transform:rotate(0)}90%{transform:rotate(-4deg)}94%{transform:rotate(4deg)}}
+
+/* Contador */
+.count{display:flex;gap:10px;justify-content:center;margin:18px 0 4px}
+.count div{background:var(--card);border-radius:50% 50% 46% 46%/58% 58% 42% 42%;width:74px;height:84px;display:flex;flex-direction:column;justify-content:center;border:4px solid var(--yellow);box-shadow:0 6px 0 rgba(255,224,138,.5)}
+.count b{font-size:1.9rem;line-height:1}
+.count span{font-size:.78rem;color:var(--soft)}
+.countmsg{font-weight:600;margin:8px 0 0}
+
+#rest{display:none;padding-top:26px}
+.shown #rest{display:block}
+.pop{opacity:0;transform:translateY(34px) scale(.92) rotate(var(--r,0deg))}
+.pop.in{opacity:1;transform:rotate(var(--r,0deg));transition:opacity .6s,transform .8s cubic-bezier(.3,1.5,.5,1)}
+
+/* Nubes y piezas */
+.cloud{position:relative;background:var(--c,#fff);color:#2f4a6d;border-radius:60px;padding:30px 22px;margin:52px 0;box-shadow:0 7px 0 var(--s,rgba(47,74,109,.2))}
+.cloud .small,.cloud .nm span{color:#3f5c80}
+.cloud::before,.cloud::after{content:"";position:absolute;background:var(--c,#fff);border-radius:50%}
+.cloud::before{width:76px;height:76px;top:-30px;left:36px}
+.cloud::after{width:100px;height:100px;top:-42px;right:38px}
+.cloud>*{position:relative;z-index:1}
+.sticker{position:absolute;z-index:2;font-size:2.2rem;animation:bob 2.6s ease-in-out infinite}
+.gifslot{width:100%;min-height:150px;border:3px dashed var(--pink);border-radius:30px;display:flex;align-items:center;justify-content:center;overflow:hidden;color:var(--soft);font-weight:600;padding:10px;background:rgba(124,196,245,.18)}
+.gifslot img{width:100%;height:auto;display:block;border-radius:24px}
+.duo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;margin:8px 0}
+.nm{font-size:1.7rem;font-weight:700;line-height:1.1}.nm span{font-size:1.05rem;color:var(--soft);font-weight:600}
+.hrt{font-size:2.2rem;animation:beat 1.2s ease-in-out infinite}
+@keyframes beat{50%{transform:scale(1.35)}}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:44px 0}
+.tile{border-radius:30px;padding:18px 10px 16px;color:#1f3b57;box-shadow:0 8px 0 rgba(90,58,85,.18)}
+.cal{background:var(--pink)}.clk{background:var(--yellow);margin-top:22px}
+.tile .top{background:#fff;border-radius:14px;font-weight:700;padding:2px 0;margin:-4px 6px 6px}
+.num{font-size:4rem;line-height:1;font-weight:700}
+.ico{font-size:2.6rem;display:inline-block;animation:swing 2.4s ease-in-out infinite;transform-origin:50% 0}
+@keyframes swing{50%{transform:rotate(14deg)}}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pair .cloud{padding:22px 12px;margin:46px 0 20px;border-radius:44px}
+.pair .cloud::before{width:50px;height:50px;top:-20px;left:20px}.pair .cloud::after{width:66px;height:66px;top:-28px;right:20px}
+.pair .gifslot{min-height:110px;font-size:.85rem}
+.pair .stag{margin-top:76px}
+.polaroid{position:relative;background:#fff;padding:10px 10px 14px;border-radius:10px;box-shadow:0 8px 18px rgba(90,58,85,.28);color:#2f4a6d;margin:40px 0 10px}
+.polaroid::before{content:"";position:absolute;top:-14px;left:50%;width:74px;height:24px;background:rgba(255,224,138,.9);transform:translateX(-50%) rotate(-3deg);border-radius:4px}
+.polaroid .gifslot{min-height:170px;border-radius:6px;font-size:.85rem}.polaroid .gifslot img{border-radius:4px}
+.cap{font-weight:700;margin:10px 0 0;font-size:1rem}
+.pair .polaroid.stag{margin-top:64px}
+.bname{font-family:"Pacifico","Brush Script MT",cursive;font-size:2.4rem;line-height:1.2;margin:6px 0;background:linear-gradient(90deg,#2e8bd8,#5aaeea,#7a8ff0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stork{position:fixed;top:5%;left:0;width:150px;z-index:5;pointer-events:none;animation:fly 24s linear infinite}
+.stork svg{width:100%;height:auto;display:block;animation:bob 2.2s ease-in-out infinite}
+.wing{transform-origin:70px 38px;animation:flap .7s ease-in-out infinite alternate}
+@keyframes fly{from{transform:translateX(-170px)}to{transform:translateX(calc(100vw + 20px))}}
+@keyframes flap{to{transform:rotate(-26deg) scaleY(.8)}}
+.btn{display:inline-block;margin-top:14px;padding:14px 26px;border-radius:99px;font-weight:700;font-size:1.05rem;text-decoration:none;color:#1f3b57;border:0;cursor:pointer;font-family:inherit}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.btn:active{transform:scale(.97)}
+.maps{background:var(--blue)}
+.wa{background:linear-gradient(90deg,var(--mint),var(--yellow));font-size:1.2rem;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.07);box-shadow:0 0 0 12px rgba(168,230,207,.35)}}
+.mapbox{display:block;width:100%;max-width:100%;height:270px;border:0;border-radius:28px;margin:12px 0 4px;background:rgba(159,211,245,.25)}
+.foot{font-weight:600;margin:10px 0 0}
+
+/* Reproductor */
+.player{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));width:min(92%,430px);background:var(--card);border:3px solid var(--lilac);border-radius:99px;padding:8px 14px;display:flex;align-items:center;gap:10px;z-index:20;box-shadow:0 6px 18px rgba(90,58,85,.25)}
+.player button{all:unset;cursor:pointer;width:40px;height:40px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex:none}
+.player button:focus-visible{outline:3px solid var(--ink)}
+.player .t{flex:1;min-width:0;text-align:left;font-size:.85rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.player input{width:70px;accent-color:var(--pink)}
+
+/* Confeti */
+.cf{position:fixed;z-index:30;pointer-events:none;width:10px;height:14px;animation:burst 2.8s cubic-bezier(.2,.7,.4,1) forwards}
+@keyframes burst{0%{transform:translate(0,0) rotate(0);opacity:1}55%{transform:translate(var(--x),var(--y)) rotate(300deg);opacity:1}100%{transform:translate(var(--x),calc(var(--y) + 380px)) rotate(720deg);opacity:0}}
+.rain{position:fixed;top:-20px;z-index:1;pointer-events:none;width:9px;height:13px;opacity:.85;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.pop{opacity:1;transform:rotate(var(--r,0deg))}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="fx" aria-hidden="true"></div>
+<div class="stork" aria-hidden="true"><svg viewBox="0 0 160 92">
+<path d="M10 60L42 48M16 70L46 52" stroke="#ff9a3c" stroke-width="3" stroke-linecap="round"/>
+<path d="M44 42L16 34L22 46Z" fill="#fff" stroke="#c5ddf2"/>
+<ellipse cx="70" cy="42" rx="30" ry="13" fill="#fff" stroke="#c5ddf2"/>
+<path d="M92 36Q108 26 112 17" stroke="#fff" stroke-width="7" stroke-linecap="round" fill="none"/>
+<circle cx="114" cy="14" r="7" fill="#fff" stroke="#c5ddf2"/><circle cx="116" cy="12" r="1.6" fill="#333"/>
+<path d="M120 11L152 16L120 19Z" fill="#ff9a3c"/>
+<path d="M146 17Q142 30 141 42" stroke="#5aaeea" stroke-width="3" fill="none"/>
+<ellipse cx="141" cy="58" rx="16" ry="14" fill="#7cc4f5" stroke="#4a90e2"/>
+<circle cx="141" cy="53" r="8" fill="#ffe3c8"/><circle cx="138" cy="52" r="1.2" fill="#333"/><circle cx="144" cy="52" r="1.2" fill="#333"/>
+<path d="M138 56q3 2 6 0" stroke="#c0605a" fill="none"/>
+<g class="wing"><path d="M55 38Q70 4 104 12Q82 34 62 46Z" fill="#fff" stroke="#c5ddf2"/><path d="M104 12Q96 20 88 26L100 22Z" fill="#35506e"/></g>
+</svg></div>
+<div class="wrap" id="app">
+  <div class="flags" id="flags" aria-hidden="true"></div>
+  <p class="kick">¡Llegó la hora de celebrar! 🎉</p>
+  <p class="script">Baby Shower</p>
+  <p class="title">🧸</p>
+
+  <div class="giftwrap" id="gw">
+    <button class="gift" id="gift" aria-label="Abrir el regalo y ver la invitación">
+      <svg class="peek" viewBox="0 0 90 90" aria-hidden="true">
+        <circle cx="16" cy="18" r="12" fill="#ffe08a"/><circle cx="74" cy="18" r="12" fill="#ffe08a"/>
+        <circle cx="45" cy="50" r="38" fill="#ffe08a"/><ellipse cx="45" cy="64" rx="17" ry="13" fill="#fff4f8"/>
+        <circle cx="32" cy="44" r="4" fill="#5a3a55"/><circle cx="58" cy="44" r="4" fill="#5a3a55"/>
+        <ellipse cx="45" cy="58" rx="5" ry="4" fill="#5a3a55"/><path d="M38 68q7 7 14 0" stroke="#5a3a55" stroke-width="2.5" fill="none"/>
+      </svg>
+      <div class="boxbody"></div>
+      <div class="lid"><div class="bow"><i></i><i></i></div></div>
+    </button>
+  </div>
+  <p class="hint">Toca el regalo para abrirlo 💝</p>
+
+  <div class="count" id="count">
+    <div><b id="d">0</b><span>días</span></div>
+    <div><b id="h">0</b><span>horas</span></div>
+    <div><b id="m">0</b><span>min</span></div>
+    <div><b id="s">0</b><span>seg</span></div>
+  </div>
+  <p class="countmsg" id="cmsg">para conocer a nuestro osito 🐻</p>
+
+  <div id="rest">
+    <div class="cloud pop" style="--r:-1.5deg;--c:#fff1b8;--s:#f0c94d">
+      <span class="sticker" style="top:-34px;left:-8px">🧸</span>
+      <span class="sticker" style="top:-30px;right:-6px;animation-delay:.6s">🍼</span>
+      <h2>Una dulce espera</h2>
+      <p class="small">Estamos esperando a un pequeño osito y queremos compartir esta aventura contigo. Ven a llenar la tarde de abrazos, risas y mucho cariño.</p>
+    </div>
+
+    <div class="cloud pop" style="--r:1.5deg;--c:#c9f2e0;--s:#7fcfae">
+      <div class="gifslot" data-gif="gif1"><span>Aquí va tu GIF 1</span></div>
+    </div>
+
+    <div class="cloud pop" style="--r:-1deg;--c:#e6dcff;--s:#b49be8">
+      <span class="sticker" style="bottom:-26px;right:12px;animation-delay:.3s">💛</span>
+      <p class="small">Con todo su amor, los futuros papás</p>
+      <div class="duo">
+        <div class="nm">Betzy<br><span>Ramírez</span></div>
+        <div class="hrt">💙</div>
+        <div class="nm">Ángel<br><span>Anaya</span></div>
+      </div>
+      <p class="small">te esperan con los brazos abiertos 🤗</p>
+    </div>
+
+    <div class="pair">
+      <div class="polaroid pop" style="--r:-4deg">
+        <div class="gifslot" data-gif="padres"><span>Foto de los papás</span></div>
+        <p class="cap">Betzy y Ángel 💙</p>
+      </div>
+      <div class="polaroid stag pop" style="--r:4deg">
+        <div class="gifslot" data-gif="ultra"><span>Ultrasonido</span></div>
+        <p class="cap">Nuestro tesorito 🍼</p>
+      </div>
+    </div>
+
+    <div class="cloud pop" style="--r:-1deg;--c:#ffd9c7;--s:#f0a98a">
+      <span class="sticker" style="top:-34px;right:10px">⭐</span>
+      <h2>¡Ya casi lo conocemos!</h2>
+      <p class="small" id="blabel">Muy pronto sabrás su nombre</p>
+      <p class="bname" id="bname">✨ ✨ ✨</p>
+    </div>
+
+    <div class="tiles">
+      <div class="tile cal pop" style="--r:-3deg">
+        <div class="top">Sábado</div>
+        <div class="num">21</div>
+        <div class="big">Noviembre</div>
+        <div class="small">2026</div>
+      </div>
+      <div class="tile clk pop" style="--r:3deg">
+        <div class="ico">🕟</div>
+        <div class="num" style="font-size:2.9rem">4:30</div>
+        <div class="big">p. m.</div>
+        <div class="small">¡No faltes!</div>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="cloud pop" style="--r:-2deg;--c:#fff1b8;--s:#f0c94d"><div class="gifslot" data-gif="gif2"><span>GIF 2</span></div></div>
+      <div class="cloud stag pop" style="--r:2deg;--c:#c9f2e0;--s:#7fcfae"><div class="gifslot" data-gif="gif3"><span>GIF 3</span></div></div>
+    </div>
+
+    <div class="cloud pop" style="--r:0deg;--c:#ffd9c7;--s:#f0a98a">
+      <h2>📍 Nos vemos aquí</h2>
+      <p class="big">Calle Álvaro Obregón #8</p>
+      <p class="small">Los Reyes La Paz Centro, C.P. 56400</p>
+      <iframe class="mapbox" title="Mapa del lugar" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d665.4417331525201!2d-98.9721295990283!3d19.355859776240962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDIxJzIxLjkiTiA5OMKwNTgnMTkuMSJX!5e0!3m2!1ses!2smx!4v1791257989541!5m2!1ses!2smx" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <a class="btn maps" href="https://www.google.com/maps/search/?api=1&query=19.356119566261732%2C-98.97217648062984" target="_blank" rel="noopener">🗺️ Abrir en Google Maps</a>
+    </div>
+
+    <div class="cloud pop" style="--r:1deg;--c:#e6dcff;--s:#b49be8">
+      <span class="sticker" style="top:-36px;left:6px">🎈</span>
+      <span class="sticker" style="top:-36px;right:6px;animation-delay:.5s">🎈</span>
+      <h2>¿Nos acompañas? 💌</h2>
+      <p class="small">Confírmanos tu asistencia para preparar todo con mucho cariño.</p>
+      <a id="wa" class="btn wa" href="#" target="_blank" rel="noopener">✅ Confirmar asistencia</a>
+    </div>
+    <p class="foot">Será un día lleno de ternura 🐻💕</p>
+  </div>
+</div>
+
+<div class="player" role="group" aria-label="Música de fondo">
+  <button id="pp" aria-label="Reproducir música">▶</button>
+  <div class="t" id="song">🎵 Aquí va tu canción</div>
+  <button id="mute" aria-label="Silenciar">🔊</button>
+  <input id="vol" type="range" min="0" max="1" step="0.05" value="0.7" aria-label="Volumen">
+</div>
+<audio id="aud" loop preload="none"></audio>
+
+<script>
+  var NUMERO = "527733459804";            
+  var CANCION = "mitesorocut.mp3";                       
+  var NOMBRE_CANCION = "Mi tesoro";
+  var GIFS = { gif1: "osito5.gif", gif2: "osito2.gif", gif3: "osito3.gif", padres: "padres.jpeg", ultra: "ultrasonido.jpeg" };
+  var NOMBRE = "";                        
+  var FECHA = new Date(2026, 10, 21, 16, 30);
+  // =============================
+  var $ = function(i){return document.getElementById(i)};
+  var COL = ["#7cc4f5","#ffe08a","#a8e6cf","#4a90e2","#b9dbff","#6f86f0"];
+  var R = Math.random;
+
+  // Banderines
+  for (var i=0;i<13;i++){ var f=document.createElement("i"); f.style.setProperty("--c",COL[i%COL.length]); f.style.setProperty("--i",i); $("flags").appendChild(f); }
+
+  // Fondo: nubes, destellos y globos
+  var fx = $("fx");
+  function amb(txt,cls,css){ var s=document.createElement("span"); s.className=cls; s.textContent=txt; s.style.cssText=css; fx.appendChild(s); }
+  for (i=0;i<4;i++) amb("☁️","cl","top:"+(6+i*22)+"%;font-size:"+(54+R()*40)+"px;animation-duration:"+(40+R()*30)+"s;animation-delay:-"+(R()*50)+"s");
+  for (i=0;i<14;i++) amb("✨","sp","top:"+(R()*95)+"%;left:"+(R()*95)+"%;font-size:"+(12+R()*14)+"px;animation-delay:-"+(R()*3)+"s");
+  for (i=0;i<6;i++) amb("🎈","bl","left:"+(5+R()*88)+"%;font-size:"+(28+R()*20)+"px;animation-duration:"+(16+R()*12)+"s;animation-delay:-"+(R()*20)+"s");
+
+  // Contador
+  function tick(){
+    var ms = FECHA - new Date();
+    if (ms <= 0){ $("count").style.display="none"; $("cmsg").textContent="¡Hoy es el gran día! 🎉"; return; }
+    var s = Math.floor(ms/1000);
+    $("d").textContent = Math.floor(s/86400);
+    $("h").textContent = Math.floor(s%86400/3600);
+    $("m").textContent = Math.floor(s%3600/60);
+    $("s").textContent = s%60;
+  }
+  tick(); setInterval(tick,1000);
+
+  // GIFs
+  document.querySelectorAll(".gifslot").forEach(function(el){
+    var src = GIFS[el.dataset.gif];
+    if (src){ el.innerHTML = '<img alt="" src="'+src+'">'; el.style.border="0"; el.style.padding="0"; el.style.background="none"; }
+  });
+
+  // Nombre del bebé
+  if (NOMBRE){ $("blabel").textContent = "Te presentamos a"; $("bname").textContent = NOMBRE; }
+
+  // Música
+  var aud = $("aud"), pp = $("pp");
+  if (CANCION){ aud.src = CANCION; $("song").textContent = "🎵 " + NOMBRE_CANCION; }
+  function sync(){ pp.textContent = aud.paused ? "▶" : "⏸"; pp.setAttribute("aria-label", aud.paused ? "Reproducir música" : "Pausar música"); }
+  function play(){ if (aud.src){ aud.play().then(sync).catch(sync); } }
+  pp.onclick = function(){ if(!aud.src) return; if (aud.paused) play(); else { aud.pause(); sync(); } };
+  $("mute").onclick = function(){ aud.muted = !aud.muted; this.textContent = aud.muted ? "🔇" : "🔊"; };
+  $("vol").oninput = function(){ aud.volume = this.value; };
+  aud.volume = 0.7;
+
+  // Aparición al hacer scroll
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); },{threshold:.15});
+  document.querySelectorAll(".pop").forEach(function(el){ io.observe(el); });
+
+  // Confeti
+  function burst(){
+    var b = $("gw").getBoundingClientRect(), cx = b.left+b.width/2, cy = b.top+40;
+    for (var k=0;k<90;k++){
+      var c=document.createElement("div"), a=R()*Math.PI*2, d=110+R()*300;
+      c.className="cf"; c.style.left=cx+"px"; c.style.top=cy+"px"; c.style.background=COL[k%COL.length];
+      c.style.borderRadius = k%3==0 ? "50%" : "2px";
+      c.style.setProperty("--x", Math.cos(a)*d+"px"); c.style.setProperty("--y", (Math.sin(a)*d-160)+"px");
+      c.style.animationDelay=(R()*.2)+"s";
+      document.body.appendChild(c); setTimeout(function(x){x.remove()},3400,c);
+    }
+  }
+  function rain(){
+    for (var k=0;k<26;k++){
+      var c=document.createElement("div"); c.className="rain";
+      c.style.left=(R()*98)+"%"; c.style.background=COL[k%COL.length]; c.style.borderRadius = k%3==0 ? "50%" : "2px";
+      c.style.animationDuration=(7+R()*7)+"s"; c.style.animationDelay="-"+(R()*10)+"s";
+      document.body.appendChild(c);
+    }
+  }
+
+  // Abrir regalo
+  var opened = false;
+  $("gift").onclick = function(){
+    if (opened) return; opened = true;
+    $("gw").classList.add("open");
+    document.body.classList.add("opened");
+    play();
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches){ burst(); rain(); }
+    setTimeout(function(){
+      $("app").classList.add("shown");
+      $("rest").scrollIntoView({behavior:"smooth", block:"start"});
+    }, 1200);
+  };
+
+  // WhatsApp
+  var msg = "¡Hola Betzy y Ángel! Confirmo mi asistencia al baby shower el 21 de noviembre a las 4:30 p. m. ¡Ahí estaré!.";
+  $("wa").href = "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(msg);
+</script>
+</body>
+</html>
